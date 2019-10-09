@@ -19,11 +19,24 @@ document.addEventListener('DOMContentLoaded', () => {
             // функция будет срабатывать только при нажатии на тег button
             if (target.tagName.toLowerCase() === 'button') {
                 // будет выводить содержимое тега, убирая при помощи trim пробелы со всех сторон
-                console.log(target.textContent.trim());
                 searchInput.value += target.textContent.trim();
             }
+
             // backspace
+            if (target.getAttribute('id') === 'keyboard-backspace') {
+                searchInput.value = searchInput.value.slice(0, -2);
+            }
+
             // space
+            if (target.getAttribute('id') === 'keyboard-space') {
+                searchInput.value += ' ';
+            }
+
+            /* проверяем есть ли у button атрибут id = keyboard-backspace
+            и если это так, то удаляем предыдущий элемент */
+            // if (target.getAttribute('id') === 'keyboard-backspace') {
+            //     searchInput.value = searchInput.value.slice(0, -2);
+            // }
         };
         
         // при клике всплывает клавиатура и наоборот, в зависимости от условия
